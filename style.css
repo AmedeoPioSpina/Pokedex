@@ -1,0 +1,8 @@
+body .pokedex form {
+  display: flex;
+  justify-content: center;
+}
+body .pokedex .searchResult .pokeInfo {
+  border-bottom: 2px solid black;
+  margin-bottom: 0.5rem;
+}/*# sourceMappingURL=style.css.map */
