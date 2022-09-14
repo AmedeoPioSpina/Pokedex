@@ -1,11 +1,41 @@
-body {
-  margin-top: 1rem;
+body .pokedex {
+  background-color: rgb(182, 0, 0);
+  font-family: "Press Start 2P", cursive;
+  padding-top: 1rem;
 }
 body .pokedex form {
   display: flex;
   justify-content: center;
 }
+body .pokedex form input {
+  background-color: olive;
+  font-family: "Press Start 2P", cursive;
+  border: 10px solid rgb(199, 199, 199);
+  border-right: 5px solid rgb(199, 199, 199);
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  width: 11rem;
+  margin: 0 5px 1rem 0;
+}
+body .pokedex form input:focus {
+  outline: none;
+}
+body .pokedex form .searchBtn {
+  background-color: rgb(199, 199, 199);
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border: none;
+  margin-bottom: 1rem;
+}
+body .pokedex .searchResult {
+  margin: 0 5rem;
+}
 body .pokedex .searchResult .pokeInfo {
-  border-bottom: 2px solid black;
+  background-color: olive;
+  border: 10px solid rgb(199, 199, 199);
+  border-radius: 2px;
+  padding: 1rem;
   margin-bottom: 0.5rem;
 }/*# sourceMappingURL=style.css.map */
