@@ -1,6 +1,5 @@
-export const inputValueFormat = () =>
+export const inputValueFormat = (inputValue) =>
 {
-    let inputValue = document.querySelector("input").value
     inputValue = inputValue.split("");
     inputValue[0] = inputValue[0].toLowerCase();
     return inputValue.join("");

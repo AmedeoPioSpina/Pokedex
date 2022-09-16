@@ -1,22 +1,23 @@
+import { textToUpperCase } from "./textToUpperCase.js";
 import { fetchInsider } from "./fetchInsider.js";
 
 export const insertHtmlInfo = async(element) => {
     
-    const divName = document.createElement("div");
-    divName.className = "pkName";
-    divName.textContent = "Name: " + element.name;
-    
     const divNumber = document.createElement("div");
     divNumber.className = "PkNumber";
     divNumber.textContent = "N°" + element.id;
+
+    const divName = document.createElement("div");
+    divName.className = "pkName";
+    divName.textContent = "Name: " + textToUpperCase(element.name);
     
     const divType = document.createElement("div");
     divType.className = "pkType";
     if(element.types.length === 2){
-        divType.textContent = "Type: " + element.types[0].type.name +" / "+ element.types[1].type.name;
+        divType.textContent = "Type: " + textToUpperCase(element.types[0].type.name) +" / "+ textToUpperCase(element.types[1].type.name);
     }
     else{
-        divType.textContent = "Type: " + element.types[0].type.name;
+        divType.textContent = "Type: " + textToUpperCase(element.types[0].type.name);
     }
     
     // const fetchLocationArea = await fetchInsider(element.location_area_encounters)
@@ -33,7 +34,7 @@ export const insertHtmlInfo = async(element) => {
             const divPkEvolvesFrom = document.createElement("div");
     divPkEvolvesFrom.className = "pkEvolvesFrom";
     if(fetchSpecies.evolves_from_species !== null){
-        divPkEvolvesFrom.textContent = "Evolve from: " + fetchSpecies.evolves_from_species.name;
+        divPkEvolvesFrom.textContent = "Evolve from: " + textToUpperCase(fetchSpecies.evolves_from_species.name);
     }
     else{
         divPkEvolvesFrom.textContent = "Evolve from: none";
@@ -41,8 +42,8 @@ export const insertHtmlInfo = async(element) => {
 
     const divPokeInfo = document.createElement("div");
     divPokeInfo.className = "pokeInfo";
-    divPokeInfo.appendChild(divName);
     divPokeInfo.appendChild(divNumber);
+    divPokeInfo.appendChild(divName);
     divPokeInfo.appendChild(divType);
     // divPokeInfo.appendChild(divPkLocationArea);
     divPokeInfo.appendChild(divPkEvolvesFrom);
