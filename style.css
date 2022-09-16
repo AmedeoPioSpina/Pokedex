@@ -2,7 +2,7 @@ body .pokedex {
   background-color: rgb(182, 0, 0);
   font-family: "Press Start 2P", cursive;
   min-height: calc(100vh - 2rem);
-  padding: 2rem 0 1rem 0;
+  padding-top: 2rem;
 }
 body .pokedex h1 {
   color: rgba(0, 0, 0, 0.4);
@@ -46,5 +46,37 @@ body .pokedex .searchResult .pokeInfo {
   border: 10px solid rgb(199, 199, 199);
   border-radius: 2px;
   padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+body .pokedex .searchResult .pokeInfo .pkNumber {
+  margin-bottom: 0.5rem;
+}
+body .pokedex .searchResult .pokeInfo .pkName {
+  margin-bottom: 0.5rem;
+}
+body .pokedex .searchResult .pokeInfo .pkType {
+  margin-bottom: 0.5rem;
+}
+body .pokedex .searchResult .pokeInfo .pkLocationArea {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+body .pokedex .searchResult .pokeInfo .pkLocationArea p {
+  margin-bottom: 0.5rem;
+}
+body .pokedex .searchResult .pokeInfo .pkLocationArea .readMoreBtn {
+  align-self: center;
+  font-family: "Press Start 2P", cursive;
+  font-size: 0.5rem;
+  color: olive;
+  background-color: black;
+  border-radius: 2px;
+  border: none;
+}
+body .pokedex .searchResult .pokeInfo .pkLocationArea .readMoreBtn:hover {
+  background-color: rgb(255, 255, 255);
+}
+body .pokedex .searchResult .pokeInfo .pkEvolveFrom {
   margin-bottom: 0.5rem;
 }/*# sourceMappingURL=style.css.map */
