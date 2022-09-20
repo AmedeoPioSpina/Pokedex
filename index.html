@@ -14,16 +14,29 @@
 <body>
     <div class="pokedex">
         <h1>PokeDex</h1>
-        <form>
-            <input type="text">
-            <button class="searchBtn" type="button">search</button>
-            <audio id="clickSound" src="/mBackgroundTheme/Pokemon button sound effect.mp3"></audio>
-        </form>
+        <div class="pokedexCommandsSez">
+            <form>
+                <input type="text">
+                <button class="searchBtn" type="button">search</button>
+                <audio id="clickSound" autoplay src="/mBackgroundTheme/Pokemon button sound effect.mp3"></audio>
+            </form>
 
+            <div class="pokedexSoundBtns">
+                <div class="muteMusic">
+                    <button class="muteBtn"></button>
+                    <p class="underNameBtn">MUTE MUSIC</p>
+                </div>
+
+                <div class="muteEffect">
+                    <button class="muteBtn"></button>
+                    <p class="underNameBtn">MUTE EFFECT</p>
+                </div>
+            </div>
+        </div>
         <div class="searchResult">
             
         </div>
-        <!-- <embed name="PokemonRed&BlueMusic" src="mBackgroundTheme/Pokémon Red & Blue Music Opening Theme.mp3" loop="true" hidden="true" autostart="true"> -->
+        <audio id="backgroundSoundTheme" autoplay muted loop="loop" src="/mBackgroundTheme/Pokémon Red & Blue Music Opening Theme.mp3"></audio>
     </div>
     <script type="module" src="app.js"></script>
 </body>

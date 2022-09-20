@@ -10,13 +10,18 @@ body .pokedex h1 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
 }
-body .pokedex form {
+body .pokedex .pokedexCommandsSez {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   border-bottom: 5px solid rgba(0, 0, 0, 0.4);
   margin-bottom: 1rem;
 }
-body .pokedex form input {
+body .pokedex .pokedexCommandsSez form {
+  display: flex;
+  justify-content: center;
+}
+body .pokedex .pokedexCommandsSez form input {
   background-color: olive;
   font-family: "Press Start 2P", cursive;
   border: 10px solid rgb(199, 199, 199);
@@ -24,19 +29,47 @@ body .pokedex form input {
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
   width: 11rem;
-  margin: 0 5px 2rem 0;
+  margin: 0 5px 1.5rem 0;
 }
-body .pokedex form input:focus {
+body .pokedex .pokedexCommandsSez form input:focus {
   outline: none;
 }
-body .pokedex form .searchBtn {
+body .pokedex .pokedexCommandsSez form .searchBtn {
   background-color: rgb(199, 199, 199);
   font-weight: bold;
   color: rgba(0, 0, 0, 0.5);
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   border: none;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+}
+body .pokedex .pokedexCommandsSez .pokedexSoundBtns {
+  display: flex;
+}
+body .pokedex .pokedexCommandsSez .pokedexSoundBtns button {
+  background-color: rgb(199, 199, 199);
+  border: none;
+  border-radius: 15px;
+  width: 2.5rem;
+  height: 0.5rem;
+}
+body .pokedex .pokedexCommandsSez .pokedexSoundBtns .underNameBtn {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+}
+body .pokedex .pokedexCommandsSez .pokedexSoundBtns .muteMusic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1rem 1rem 0;
+}
+body .pokedex .pokedexCommandsSez .pokedexSoundBtns .muteEffect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1rem 1rem 0;
 }
 body .pokedex .searchResult {
   margin: 0 5rem;

@@ -11,32 +11,65 @@ body{
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
         }
-        form{
+        .pokedexCommandsSez{
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             border-bottom: 5px solid rgba(0, 0, 0, 0.4);
             margin-bottom: 1rem;
-            input{
-                background-color: olive;
-                font-family: 'Press Start 2P', cursive;
-                border: 10px solid rgb(199, 199, 199);
-                border-right: 5px solid rgb(199, 199, 199);
-                border-top-left-radius: 2px;
-                border-bottom-left-radius: 2px;
-                width: 11rem;
-                margin: 0 5px 2rem 0;
-                &:focus{
-                    outline: none;
+            form{
+                display: flex;
+                justify-content: center;
+                input{
+                    background-color: olive;
+                    font-family: 'Press Start 2P', cursive;
+                    border: 10px solid rgb(199, 199, 199);
+                    border-right: 5px solid rgb(199, 199, 199);
+                    border-top-left-radius: 2px;
+                    border-bottom-left-radius: 2px;
+                    width: 11rem;
+                    margin: 0 5px 1.5rem 0;
+                    &:focus{
+                        outline: none;
+                    }
+                }
+                .searchBtn{
+                    background-color: rgb(199, 199, 199);
+                    font-weight: bold;
+                    color: rgba(0, 0, 0, 0.5);
+                    border-top-right-radius: 2px;
+                    border-bottom-right-radius: 2px;
+                    border: none;
+                    margin-bottom: 1.5rem;
                 }
             }
-            .searchBtn{
-                background-color: rgb(199, 199, 199);
-                font-weight: bold;
-                color: rgba(0, 0, 0, 0.5);
-                border-top-right-radius: 2px;
-                border-bottom-right-radius: 2px;
-                border: none;
-                margin-bottom: 2rem;
+            .pokedexSoundBtns{
+                display: flex;
+                button{
+                    background-color: rgb(199, 199, 199);
+                    border: none;
+                    border-radius: 15px;
+                    width: 2.5rem;
+                    height: 0.5rem;
+                }
+                .underNameBtn{
+                    font-family: monospace;
+                    font-weight: bold;
+                    font-size: 0.7rem;
+                    margin-top: 0.2rem;
+                }
+                .muteMusic{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: 0 1rem 1rem 0;
+                }
+                .muteEffect{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: 0 1rem 1rem 0;
+                }
             }
         }
         .searchResult{
