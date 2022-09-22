@@ -2,11 +2,11 @@ import { searchInsidePokedex } from "./searchInsidePokedex.js";
 import { inputValueFormat } from "./inputValueFormat.js";
 import { readMoreBtnFunc } from "./readMoreBtnFunc.js";
 import { searchClickSoundEffect } from "./searchClickSoundEffect.js";
+import { mutedBtnsFunc } from "./mutedBtnsFunc.js";
 
 const inputEventFunc = async() => {
 
-    // searchClickSoundEffect();
-    // initBackgroundSoundTheme();
+    mutedBtnsFunc();
 
     document.querySelector(".searchBtn").onclick = async() => {
         if(document.querySelector("input").value.replaceAll(" ", "") !== "" ){
@@ -27,5 +27,5 @@ const inputEventFunc = async() => {
         }
     })
 };
-    
+
 inputEventFunc();
