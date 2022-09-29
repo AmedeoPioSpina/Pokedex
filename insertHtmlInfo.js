@@ -12,16 +12,16 @@ export const insertHtmlInfo = async(element) => {
     
     const divName = document.createElement("div");
     divName.className = "pkName";
-    divName.textContent = "Name: " + textToUpperCase(element.name);
+    divName.textContent = "NAME: " + textToUpperCase(element.name);
     divPokeInfo.appendChild(divName);
     
     const divType = document.createElement("div");
     divType.className = "pkType";
     if(element.types.length === 2){
-        divType.textContent = "Type: " + textToUpperCase(element.types[0].type.name) +" / "+ textToUpperCase(element.types[1].type.name);
+        divType.textContent = "TYPE: " + textToUpperCase(element.types[0].type.name) +" / "+ textToUpperCase(element.types[1].type.name);
     }
     else{
-        divType.textContent = "Type: " + textToUpperCase(element.types[0].type.name);
+        divType.textContent = "TYPE: " + textToUpperCase(element.types[0].type.name);
     }
     divPokeInfo.appendChild(divType);
     
@@ -30,24 +30,57 @@ export const insertHtmlInfo = async(element) => {
     divPkLocationArea.className = "pkLocationArea";
     const p = document.createElement("p");
     if(fetchLocationArea.length !== 0){
-        let locations = [];
-        fetchLocationArea.map(area => {
-            let areaTarget = area.location_area.name;
-            locations.push(areaTarget.split("-").join(" "));
-        });
-        p.textContent = "Location area: " + (locations.join(", "));
-        const readMoreBtn = document.createElement("button");
-        readMoreBtn.className ="readMoreBtn";
-        readMoreBtn.dataset.stateButton = "off";
-        readMoreBtn.textContent = "Read more"
-        p.style = "overflow: hidden; height: 1rem;"
-        divPkLocationArea.appendChild(p);
-        divPkLocationArea.appendChild(readMoreBtn);
+
+        let gamesAndLocation = [[]];
+        const gameIndices =  element.game_indices;
+        gameIndices.map((el) => {
+            gamesAndLocation[0].push(el.version.name);
+        })
+        fetchLocationArea.map((el) => {
+            const areaName = el.location_area.name;
+            const gameVersions = el.version_details;
+            gameVersions.map((item) => {
+                const versionName = item.version.name;
+                gamesAndLocation[0].map((trg, ind) =>{
+                    if(trg === versionName){
+                        let gamesAndLocationIndex = 1;
+                        do{
+                            if(gamesAndLocation[gamesAndLocationIndex] === undefined){
+                                gamesAndLocation[gamesAndLocationIndex] = [];
+                                gamesAndLocation[gamesAndLocationIndex][ind] = areaName;
+                                gamesAndLocationIndex = 0;
+                            }
+                            else{
+                                if(gamesAndLocation[gamesAndLocationIndex][ind] === undefined){
+                                    gamesAndLocation[gamesAndLocationIndex][ind] = areaName;
+                                    gamesAndLocationIndex = 0;
+                                }
+                                else{
+                                    gamesAndLocationIndex +=1
+                                }
+                            }
+                        }while(gamesAndLocationIndex !== 0)
+                    }
+                })
+            })
+        })
+        console.log(gamesAndLocation);
+        const ul = document.createElement("ul");
+        gamesAndLocation[0].map((el, index) => {
+            if(gamesAndLocation[1][index] !== undefined){
+            let li = document.createElement("li");
+            li.textContent = textToUpperCase(el);
+            ul.appendChild(li)
+        }
+        divPkLocationArea.textContent = "LOCATION AREA:";
+        divPkLocationArea.appendChild(ul);
+
+        })
     }
     else{
         
-        p.textContent = "Location area: none";
-        divPkLocationArea.appendChild(p);
+        divPkLocationArea.textContent = "LOCATION AREA: None";
+        divPkLocationArea.appendChild(ul);
     }
     divPokeInfo.appendChild(divPkLocationArea);
 
@@ -57,10 +90,10 @@ export const insertHtmlInfo = async(element) => {
     const divPkEvolvesFrom = document.createElement("div");
     divPkEvolvesFrom.className = "pkEvolvesFrom";
     if(fetchSpecies.evolves_from_species !== null){
-        divPkEvolvesFrom.textContent = "Evolve from: " + textToUpperCase(fetchSpecies.evolves_from_species.name);
+        divPkEvolvesFrom.textContent = "EVOLVE FROM: " + textToUpperCase(fetchSpecies.evolves_from_species.name);
     }
     else{
-        divPkEvolvesFrom.textContent = "Evolve from: none";
+        divPkEvolvesFrom.textContent = "EVOLVE FROM: None";
     };
     divPokeInfo.appendChild(divPkEvolvesFrom);
 
