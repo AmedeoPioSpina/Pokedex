@@ -1,5 +1,6 @@
 import { textToUpperCase } from "./textToUpperCase.js";
 import { fetchInsider } from "./fetchInsider.js";
+import { getGamesAndLocation } from "./getGamesAndLocation.js";
 
 export const insertHtmlInfo = async(element) => {
     const divPokeInfo = document.createElement("div");
@@ -29,58 +30,77 @@ export const insertHtmlInfo = async(element) => {
     const divPkLocationArea = document.createElement("div");
     divPkLocationArea.className = "pkLocationArea";
     const p = document.createElement("p");
+    let gamesAndLocation = [[]];
     if(fetchLocationArea.length !== 0){
-
-        let gamesAndLocation = [[]];
-        const gameIndices =  element.game_indices;
-        gameIndices.map((el) => {
-            gamesAndLocation[0].push(el.version.name);
-        })
-        fetchLocationArea.map((el) => {
-            const areaName = el.location_area.name;
-            const gameVersions = el.version_details;
-            gameVersions.map((item) => {
-                const versionName = item.version.name;
-                gamesAndLocation[0].map((trg, ind) =>{
-                    if(trg === versionName){
-                        let gamesAndLocationIndex = 1;
-                        do{
-                            if(gamesAndLocation[gamesAndLocationIndex] === undefined){
-                                gamesAndLocation[gamesAndLocationIndex] = [];
-                                gamesAndLocation[gamesAndLocationIndex][ind] = areaName;
-                                gamesAndLocationIndex = 0;
-                            }
-                            else{
-                                if(gamesAndLocation[gamesAndLocationIndex][ind] === undefined){
-                                    gamesAndLocation[gamesAndLocationIndex][ind] = areaName;
-                                    gamesAndLocationIndex = 0;
-                                }
-                                else{
-                                    gamesAndLocationIndex +=1
-                                }
-                            }
-                        }while(gamesAndLocationIndex !== 0)
-                    }
-                })
-            })
-        })
-        console.log(gamesAndLocation);
-        const ul = document.createElement("ul");
+        
+        getGamesAndLocation(element, gamesAndLocation, fetchLocationArea);
+        const gameVersionsList = document.createElement("ul");
+        gameVersionsList.className = "gameVersionsList"
         gamesAndLocation[0].map((el, index) => {
             if(gamesAndLocation[1][index] !== undefined){
-            let li = document.createElement("li");
-            li.textContent = textToUpperCase(el);
-            ul.appendChild(li)
-        }
-        divPkLocationArea.textContent = "LOCATION AREA:";
-        divPkLocationArea.appendChild(ul);
-
+                let li = document.createElement("li");
+                li.className = "version"
+                li.dataset.clickStatus = "off";
+                li.textContent = textToUpperCase(el);
+                gameVersionsList.appendChild(li)
+            }
+            divPkLocationArea.textContent = "LOCATION AREA:";
+            divPkLocationArea.appendChild(gameVersionsList);
+        })
+        let versions = Array.from(gameVersionsList.querySelectorAll(".version"));
+        versions.map((liTarget) => {
+            liTarget.onclick = () => {
+                if(liTarget.dataset.clickStatus === "off"){
+                    liTarget.dataset.clickStatus = "on";
+                    const versionTarget = liTarget.textContent.toLocaleLowerCase();
+                    const versIndex = gamesAndLocation[0].findIndex((vers) => {
+                        return vers === versionTarget;
+                    })
+                    versions.map(litrg => {
+                        if(litrg !== liTarget){
+                            litrg.style.display = "none";
+                        }
+                        else{
+                            litrg.textContent = litrg.textContent.toUpperCase();
+                            litrg.textContent += ":";
+                            
+                        }
+                    })
+                    let arysIndex = 1;
+                    while(gamesAndLocation[arysIndex][versIndex] !== undefined){
+                        let liLocation = document.createElement("li");
+                        liLocation.className = "location";
+                        if(gamesAndLocation[arysIndex+1][versIndex] !== undefined){
+                            liLocation.textContent = textToUpperCase(gamesAndLocation[arysIndex][versIndex]).replaceAll("-", " ") + ", ";
+                        }
+                        else{
+                            liLocation.textContent = textToUpperCase(gamesAndLocation[arysIndex][versIndex]).replaceAll("-", " ") + ".";
+                        }
+                        arysIndex += 1;
+                        gameVersionsList.appendChild(liLocation);
+                    }
+                }
+                else{
+                    liTarget.dataset.clickStatus = "off";
+                    while(gameVersionsList.lastChild.className !== "version"){
+                        gameVersionsList.removeChild(gameVersionsList.lastChild);
+                    };
+                    liTarget.textContent = textToUpperCase(liTarget.textContent.toLowerCase());
+                    let aryWord = liTarget.textContent.split("");
+                    aryWord.pop();
+                    liTarget.textContent = aryWord.join("");
+                    versions.map(litrg => {
+                        if(litrg !== liTarget){
+                            litrg.style.display = "list-item";
+                        }
+                    })
+                }
+            }
         })
     }
     else{
         
         divPkLocationArea.textContent = "LOCATION AREA: None";
-        divPkLocationArea.appendChild(ul);
     }
     divPokeInfo.appendChild(divPkLocationArea);
 

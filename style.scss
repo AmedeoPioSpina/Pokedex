@@ -3,8 +3,8 @@ body{
         
         background-color: rgb(182, 0, 0);
         font-family: 'Press Start 2P', cursive;
-        min-height: calc(100vh - 2rem);
-        padding-top: 2rem;
+        min-height: calc(100vh - 2rem - 0.5rem);
+        padding: 2rem 0 0.5rem 0;
         h1{
             color: rgba(0, 0, 0, 0.4);
             text-align: center;
@@ -97,17 +97,20 @@ body{
                 .pkLocationArea{
                     display: flex;
                     margin-bottom: 0.5rem;
-                    ul{
+                    .gameVersionsList{
                         display: flex;
                         flex-wrap: wrap;
-                        flex-basis: 70%;
+                        flex-basis: 65%;
                         margin-left: 0.8rem;
-                        li{
+                        .version{
                             margin: 0 1rem 0.2rem 0;
                             cursor: pointer;
                             &:hover{
                                 text-decoration: underline;
                             }
+                        }
+                        .location{
+                            margin-bottom: 0.2rem;
                         }
                     }
                     
