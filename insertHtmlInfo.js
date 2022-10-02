@@ -3,8 +3,22 @@ import { fetchInsider } from "./fetchInsider.js";
 import { getGamesAndLocation } from "./getGamesAndLocation.js";
 
 export const insertHtmlInfo = async(element) => {
+    
     const divPokeInfo = document.createElement("div");
     divPokeInfo.className = "pokeInfo";
+
+    const delBtn = document.createElement("button");
+    delBtn.className = "delBtn";
+    delBtn.textContent = "X";
+    divPokeInfo.appendChild(delBtn)
+
+    const divPokeImgs = document.createElement("div");
+    divPokeImgs.className = "pkImgs";
+    const pkFrontImg = document.createElement("img");
+    pkFrontImg.className="pkFrontImg";
+    pkFrontImg.src = element.sprites.front_default;
+    divPokeImgs.appendChild(pkFrontImg);
+    divPokeInfo.appendChild(divPokeImgs);
     
     const divNumber = document.createElement("div");
     divNumber.className = "pkNumber";

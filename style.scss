@@ -77,26 +77,46 @@ body{
             }
         }
         .searchResult{
-            margin: 0 5rem;
+            margin: 0 1rem;
             .pokeInfo{
                 background-color: olive;
                 border: 10px solid rgb(199, 199, 199);
                 border-radius: 2px;
+                position: relative;
                 padding: 1rem;
                 margin-bottom: 0.5rem;
+                .delBtn{
+                    border: 10px solid rgb(199, 199, 199);
+                    border-radius: 2px;
+                    color: rgba(0, 0, 0, 0.5);
+                    background-color: rgb(199, 199, 199);
+                    font-weight: bold;
+                    font-size: 1rem;
+                    position: absolute;
+                    top: -2%;
+                    right: -3%;
+                }
+                .pkImgs{
+                    display: flex;
+                    justify-content: center;
+                    .pkFrontImg{
+                        width: 10rem;
+                    }
+                }
                 .pkNumber{
-                    margin-bottom: 0.5rem;
+                    margin-bottom: 1rem;
                 }
                 .pkName{
-                    margin-bottom: 0.5rem;
+                    margin-bottom: 1rem;
                 }
                 .pkType{
-                    margin-bottom: 0.5rem;
+                    margin-bottom: 1rem;
                 }
 
                 .pkLocationArea{
                     display: flex;
-                    margin-bottom: 0.5rem;
+                    flex-direction: column;
+                    margin-bottom: 1rem;
                     .gameVersionsList{
                         display: flex;
                         flex-wrap: wrap;
@@ -104,10 +124,6 @@ body{
                         margin-left: 0.8rem;
                         .version{
                             margin: 0 1rem 0.2rem 0;
-                            cursor: pointer;
-                            &:hover{
-                                text-decoration: underline;
-                            }
                         }
                         .location{
                             margin-bottom: 0.2rem;
