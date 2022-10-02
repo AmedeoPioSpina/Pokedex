@@ -8,6 +8,7 @@ body .pokedex h1 {
   color: rgba(0, 0, 0, 0.4);
   text-align: center;
   font-size: 2.5rem;
+  font-weight: bold;
   margin-bottom: 1.5rem;
 }
 body .pokedex .pokedexCommandsSez {
@@ -137,13 +138,11 @@ body .pokedex .searchResult .pokeInfo .pkType {
 }
 body .pokedex .searchResult .pokeInfo .pkLocationArea {
   display: flex;
-  flex-direction: column;
   margin-bottom: 1rem;
 }
 body .pokedex .searchResult .pokeInfo .pkLocationArea .gameVersionsList {
   display: flex;
   flex-wrap: wrap;
-  flex-basis: 65%;
   margin-right: 0.8rem;
 }
 body .pokedex .searchResult .pokeInfo .pkLocationArea .gameVersionsList .version {

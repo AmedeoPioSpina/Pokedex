@@ -1,6 +1,7 @@
 import { textToUpperCase } from "./textToUpperCase.js";
 import { fetchInsider } from "./fetchInsider.js";
 import { getGamesAndLocation } from "./getGamesAndLocation.js";
+import { searchInsidePokedex } from "./searchInsidePokedex.js";
 
 export const insertHtmlInfo = async(element) => {
     
@@ -60,7 +61,7 @@ export const insertHtmlInfo = async(element) => {
     }
     divType.appendChild(pCurrType);
     divPokeInfo.appendChild(divType);
-    
+
     const fetchLocationArea = await fetchInsider(element.location_area_encounters)
     const divPkLocationArea = document.createElement("div");
     divPkLocationArea.className = "pkLocationArea";
@@ -70,7 +71,6 @@ export const insertHtmlInfo = async(element) => {
     divPkLocationArea.appendChild(pLocationAreaField);
     let gamesAndLocation = [[]];
     if(fetchLocationArea.length !== 0){
-        
         getGamesAndLocation(element, gamesAndLocation, fetchLocationArea);
         const gameVersionsList = document.createElement("ul");
         gameVersionsList.className = "gameVersionsList"
@@ -107,7 +107,7 @@ export const insertHtmlInfo = async(element) => {
                     while(gamesAndLocation[arysIndex][versIndex] !== undefined){
                         let liLocation = document.createElement("li");
                         liLocation.className = "location";
-                        if(gamesAndLocation[arysIndex+1][versIndex] !== undefined){
+                        if(gamesAndLocation[arysIndex+1] !== undefined && gamesAndLocation[arysIndex+1][versIndex] !== undefined){
                             liLocation.textContent = textToUpperCase(gamesAndLocation[arysIndex][versIndex]).replaceAll("-", " ") + ", ";
                         }
                         else{
@@ -136,8 +136,10 @@ export const insertHtmlInfo = async(element) => {
         })
     }
     else{
-        
-        divPkLocationArea.textContent = " None";
+        const pCurrLocationAera = document.createElement("p");
+        pCurrLocationAera.className = "currLocationArea"
+        pCurrLocationAera.textContent = " None";
+        divPkLocationArea.appendChild(pCurrLocationAera);
     }
     divPokeInfo.appendChild(divPkLocationArea);
 
@@ -154,6 +156,9 @@ export const insertHtmlInfo = async(element) => {
     divPkEvolveFrom.appendChild(pEvolveFromField);
     if(fetchSpecies.evolves_from_species !== null){
         pCurrEvolveFrom.textContent = textToUpperCase(fetchSpecies.evolves_from_species.name);
+        pCurrEvolveFrom.onclick = () => {
+            searchInsidePokedex(fetchSpecies.evolves_from_species.name);
+        }
     }
     else{
         pCurrEvolveFrom.textContent = "None";

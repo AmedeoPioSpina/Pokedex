@@ -10,6 +10,7 @@ body{
             color: rgba(0, 0, 0, 0.4);
             text-align: center;
             font-size: 2.5rem;
+            font-weight: bold;
             margin-bottom: 1.5rem;
         }
         .pokedexCommandsSez{
@@ -131,12 +132,10 @@ body{
 
                 .pkLocationArea{
                     display: flex;
-                    flex-direction: column;
                     margin-bottom: 1rem;
                     .gameVersionsList{
                         display: flex;
                         flex-wrap: wrap;
-                        flex-basis: 65%;
                         margin-right: 0.8rem;
                         .version{
                             text-decoration: underline;
