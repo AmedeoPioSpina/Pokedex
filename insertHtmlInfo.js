@@ -10,7 +10,7 @@ export const insertHtmlInfo = async(element) => {
     const delBtn = document.createElement("button");
     delBtn.className = "delBtn";
     delBtn.textContent = "X";
-    divPokeInfo.appendChild(delBtn)
+    divPokeInfo.appendChild(delBtn);
 
     const divPokeImgs = document.createElement("div");
     divPokeImgs.className = "pkImgs";
@@ -22,28 +22,52 @@ export const insertHtmlInfo = async(element) => {
     
     const divNumber = document.createElement("div");
     divNumber.className = "pkNumber";
-    divNumber.textContent = "N°" + element.id;
+    const pNumberField = document.createElement("p");
+    pNumberField.className = "field";
+    const pCurrNumber = document.createElement("p")
+    pCurrNumber.className = "currNumber";
+    pNumberField.textContent = "N°";
+    divNumber.appendChild(pNumberField);
+    pCurrNumber.textContent = element.id;
+    divNumber.appendChild(pCurrNumber);
     divPokeInfo.appendChild(divNumber);
     
     const divName = document.createElement("div");
     divName.className = "pkName";
-    divName.textContent = "NAME: " + textToUpperCase(element.name);
+    const pNameField = document.createElement("p");
+    pNameField.className = "field";
+    const pCurrName = document.createElement("p")
+    pCurrName.className = "currName";
+    pNameField.textContent = "NAME:";
+    divName.appendChild(pNameField);
+    pCurrName.textContent = textToUpperCase(element.name);
+    divName.appendChild(pCurrName);
     divPokeInfo.appendChild(divName);
     
     const divType = document.createElement("div");
     divType.className = "pkType";
+    const pTypeField = document.createElement("p");
+    pTypeField.className = "field";
+    const pCurrType = document.createElement("p")
+    pCurrType.className = "currType";
+    pTypeField.textContent = "TYPE:";
+    divType.appendChild(pTypeField);
     if(element.types.length === 2){
-        divType.textContent = "TYPE: " + textToUpperCase(element.types[0].type.name) +" / "+ textToUpperCase(element.types[1].type.name);
+        pCurrType.textContent = textToUpperCase(element.types[0].type.name) +" / "+ textToUpperCase(element.types[1].type.name);
     }
     else{
-        divType.textContent = "TYPE: " + textToUpperCase(element.types[0].type.name);
+        pCurrType.textContent = textToUpperCase(element.types[0].type.name);
     }
+    divType.appendChild(pCurrType);
     divPokeInfo.appendChild(divType);
     
     const fetchLocationArea = await fetchInsider(element.location_area_encounters)
     const divPkLocationArea = document.createElement("div");
     divPkLocationArea.className = "pkLocationArea";
-    const p = document.createElement("p");
+    const pLocationAreaField = document.createElement("p");
+    pLocationAreaField.className = "field";
+    pLocationAreaField.textContent = "LOCATION AREA:"
+    divPkLocationArea.appendChild(pLocationAreaField);
     let gamesAndLocation = [[]];
     if(fetchLocationArea.length !== 0){
         
@@ -58,7 +82,6 @@ export const insertHtmlInfo = async(element) => {
                 li.textContent = textToUpperCase(el);
                 gameVersionsList.appendChild(li)
             }
-            divPkLocationArea.textContent = "LOCATION AREA:";
             divPkLocationArea.appendChild(gameVersionsList);
         })
         let versions = Array.from(gameVersionsList.querySelectorAll(".version"));
@@ -114,22 +137,29 @@ export const insertHtmlInfo = async(element) => {
     }
     else{
         
-        divPkLocationArea.textContent = "LOCATION AREA: None";
+        divPkLocationArea.textContent = " None";
     }
     divPokeInfo.appendChild(divPkLocationArea);
 
     
     
     const fetchSpecies = await fetchInsider(element.species.url);
-    const divPkEvolvesFrom = document.createElement("div");
-    divPkEvolvesFrom.className = "pkEvolvesFrom";
+    const divPkEvolveFrom = document.createElement("div");
+    divPkEvolveFrom.className = "pkEvolveFrom";
+    const pEvolveFromField = document.createElement("p");
+    pEvolveFromField.className = "field";
+    const pCurrEvolveFrom = document.createElement("p")
+    pCurrEvolveFrom.className = "currEvolveFrom";
+    pEvolveFromField.textContent = "EVOLVE FROM:";
+    divPkEvolveFrom.appendChild(pEvolveFromField);
     if(fetchSpecies.evolves_from_species !== null){
-        divPkEvolvesFrom.textContent = "EVOLVE FROM: " + textToUpperCase(fetchSpecies.evolves_from_species.name);
+        pCurrEvolveFrom.textContent = textToUpperCase(fetchSpecies.evolves_from_species.name);
     }
     else{
-        divPkEvolvesFrom.textContent = "EVOLVE FROM: None";
+        pCurrEvolveFrom.textContent = "None";
     };
-    divPokeInfo.appendChild(divPkEvolvesFrom);
+    divPkEvolveFrom.appendChild(pCurrEvolveFrom);
+    divPokeInfo.appendChild(divPkEvolveFrom);
 
     
     const searchResult = document.querySelector(".searchResult");

@@ -1,8 +1,8 @@
 import { searchInsidePokedex } from "./searchInsidePokedex.js";
 import { inputValueFormat } from "./inputValueFormat.js";
-import { readMoreBtnFunc } from "./readMoreBtnFunc.js";
 import { searchClickSoundEffect } from "./searchClickSoundEffect.js";
 import { mutedBtnsFunc } from "./mutedBtnsFunc.js";
+import { delBtnsFunc } from "./delBtnsFunc.js";
 
 const inputEventFunc = async() => {
 
@@ -13,7 +13,7 @@ const inputEventFunc = async() => {
             searchClickSoundEffect();
             await searchInsidePokedex(inputValueFormat(document.querySelector("input").value));
             document.querySelector("input").value = "";
-            readMoreBtnFunc();
+            delBtnsFunc();
         }
     }
     
@@ -23,7 +23,7 @@ const inputEventFunc = async() => {
             searchClickSoundEffect();
             await searchInsidePokedex(inputValueFormat(document.querySelector("input").value));
             document.querySelector("input").value = "";
-            readMoreBtnFunc();
+            delBtnsFunc();
         }
     })
 };

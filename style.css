@@ -1,6 +1,6 @@
 body .pokedex {
   background-color: rgb(182, 0, 0);
-  font-family: "Press Start 2P", cursive;
+  font-family: "Poppins", sans-serif;
   min-height: calc(100vh - 2rem - 0.5rem);
   padding: 2rem 0 0.5rem 0;
 }
@@ -23,7 +23,7 @@ body .pokedex .pokedexCommandsSez form {
 }
 body .pokedex .pokedexCommandsSez form input {
   background-color: olive;
-  font-family: "Press Start 2P", cursive;
+  font-family: "Poppins", sans-serif;
   border: 10px solid rgb(199, 199, 199);
   border-right: 5px solid rgb(199, 199, 199);
   border-top-left-radius: 2px;
@@ -36,15 +36,15 @@ body .pokedex .pokedexCommandsSez form input:focus {
 }
 body .pokedex .pokedexCommandsSez form input::-moz-placeholder {
   color: rgb(92, 92, 1);
-  font-size: 0.5rem;
+  font-size: 0.7rem;
 }
 body .pokedex .pokedexCommandsSez form input:-ms-input-placeholder {
   color: rgb(92, 92, 1);
-  font-size: 0.5rem;
+  font-size: 0.7rem;
 }
 body .pokedex .pokedexCommandsSez form input::placeholder {
   color: rgb(92, 92, 1);
-  font-size: 0.5rem;
+  font-size: 0.7rem;
 }
 body .pokedex .pokedexCommandsSez form .searchBtn {
   background-color: rgb(199, 199, 199);
@@ -90,35 +90,49 @@ body .pokedex .searchResult .pokeInfo {
   background-color: olive;
   border: 10px solid rgb(199, 199, 199);
   border-radius: 2px;
+  box-shadow: 0.1rem 0.1rem 0.5rem;
   position: relative;
   padding: 1rem;
   margin-bottom: 0.5rem;
 }
+body .pokedex .searchResult .pokeInfo .field {
+  font-weight: bold;
+  margin-right: 0.8rem;
+}
 body .pokedex .searchResult .pokeInfo .delBtn {
-  border: 10px solid rgb(199, 199, 199);
+  border: none;
   border-radius: 2px;
   color: rgba(0, 0, 0, 0.5);
   background-color: rgb(199, 199, 199);
   font-weight: bold;
   font-size: 1rem;
   position: absolute;
-  top: -2%;
-  right: -3%;
+  top: -0.5rem;
+  right: -0.5rem;
+  padding: 10px 14px;
 }
 body .pokedex .searchResult .pokeInfo .pkImgs {
   display: flex;
   justify-content: center;
 }
 body .pokedex .searchResult .pokeInfo .pkImgs .pkFrontImg {
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 2px;
+  box-shadow: 0rem 0rem 0.5rem;
+  background-color: rgba(255, 255, 255, 0.5);
   width: 10rem;
+  margin-bottom: 1rem;
 }
 body .pokedex .searchResult .pokeInfo .pkNumber {
+  display: flex;
   margin-bottom: 1rem;
 }
 body .pokedex .searchResult .pokeInfo .pkName {
+  display: flex;
   margin-bottom: 1rem;
 }
 body .pokedex .searchResult .pokeInfo .pkType {
+  display: flex;
   margin-bottom: 1rem;
 }
 body .pokedex .searchResult .pokeInfo .pkLocationArea {
@@ -130,14 +144,16 @@ body .pokedex .searchResult .pokeInfo .pkLocationArea .gameVersionsList {
   display: flex;
   flex-wrap: wrap;
   flex-basis: 65%;
-  margin-left: 0.8rem;
+  margin-right: 0.8rem;
 }
 body .pokedex .searchResult .pokeInfo .pkLocationArea .gameVersionsList .version {
+  text-decoration: underline;
   margin: 0 1rem 0.2rem 0;
 }
 body .pokedex .searchResult .pokeInfo .pkLocationArea .gameVersionsList .location {
   margin-bottom: 0.2rem;
 }
 body .pokedex .searchResult .pokeInfo .pkEvolveFrom {
+  display: flex;
   margin-bottom: 0.8rem;
 }/*# sourceMappingURL=style.css.map */
