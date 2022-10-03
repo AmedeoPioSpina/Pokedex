@@ -151,6 +151,16 @@ body{
                     display: flex;
                     margin-bottom: 0.8rem;
                 }
+                .pkAbilities{
+                    display: flex;
+                    .currAbilitiesList{
+                        display: flex;
+                        flex-wrap: wrap;
+                        .currAbility{
+                            margin-right: 0.8rem;
+                        }
+                    }
+                }
             }
         }
     }

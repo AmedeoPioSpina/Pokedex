@@ -155,4 +155,14 @@ body .pokedex .searchResult .pokeInfo .pkLocationArea .gameVersionsList .locatio
 body .pokedex .searchResult .pokeInfo .pkEvolveFrom {
   display: flex;
   margin-bottom: 0.8rem;
+}
+body .pokedex .searchResult .pokeInfo .pkAbilities {
+  display: flex;
+}
+body .pokedex .searchResult .pokeInfo .pkAbilities .currAbilitiesList {
+  display: flex;
+  flex-wrap: wrap;
+}
+body .pokedex .searchResult .pokeInfo .pkAbilities .currAbilitiesList .currAbility {
+  margin-right: 0.8rem;
 }/*# sourceMappingURL=style.css.map */

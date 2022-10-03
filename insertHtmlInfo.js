@@ -166,6 +166,34 @@ export const insertHtmlInfo = async(element) => {
     divPkEvolveFrom.appendChild(pCurrEvolveFrom);
     divPokeInfo.appendChild(divPkEvolveFrom);
 
+    const divPkAbilities = document.createElement("div");
+    divPkAbilities.className = "pkAbilities";
+    const pAbilitiesField = document.createElement("p")
+    pAbilitiesField.className = "field"
+    pAbilitiesField.textContent = "ABILITIES:"
+    divPkAbilities.appendChild(pAbilitiesField);
+    const ulCurrAbilitiesList = document.createElement("ul");
+    ulCurrAbilitiesList.className = "currAbilitiesList";
+    if(element.abilities.length !== 0){
+        const abilities = element.abilities;
+        abilities.map(el => {
+            const liCurrAbility = document.createElement("li")
+            liCurrAbility.className = "currAbility";
+            liCurrAbility.textContent = el.ability.name;
+
+            ulCurrAbilitiesList.appendChild(liCurrAbility);
+        })
+    }
+    else
+    {
+        const liCurrAbility = document.createElement("li")
+        liCurrAbility.className = "currAbility";
+        liCurrAbility.textContent = "None";
+        ulCurrAbilitiesList.appendChild(liCurrAbility);
+    }
+    divPkAbilities.appendChild(ulCurrAbilitiesList);
+    divPokeInfo.appendChild(divPkAbilities);
+
     
     const searchResult = document.querySelector(".searchResult");
     searchResult.appendChild(divPokeInfo);
